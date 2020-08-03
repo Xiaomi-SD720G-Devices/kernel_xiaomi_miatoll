@@ -221,7 +221,7 @@ static DEFINE_STATIC_KEY_FALSE(timers_nohz_active);
 static DEFINE_MUTEX(timer_keys_mutex);
 
 #ifdef CONFIG_SMP
-unsigned int sysctl_timer_migration = 1;
+unsigned int sysctl_timer_migration = 0;
 
 DEFINE_STATIC_KEY_FALSE(timers_migration_enabled);
 
