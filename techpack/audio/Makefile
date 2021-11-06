@@ -85,3 +85,4 @@ obj-y += 4.0/
 endif
 
 subdir-ccflags-y := -Os
+subdir-ccflags-y += -g0
