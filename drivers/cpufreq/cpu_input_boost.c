@@ -349,14 +349,14 @@ static int __init cpu_input_boost_init(void)
 	b->cpu_notif.notifier_call = cpu_notifier_cb;
 	ret = cpufreq_register_notifier(&b->cpu_notif, CPUFREQ_POLICY_NOTIFIER);
 	if (ret) {
-		pr_err("Failed to register cpufreq notifier, err: %d\n", ret);
+		pr_debug("Failed to register cpufreq notifier, err: %d\n", ret);
 		goto free_b;
 	}
 
 	cpu_input_boost_input_handler.private = b;
 	ret = input_register_handler(&cpu_input_boost_input_handler);
 	if (ret) {
-		pr_err("Failed to register input handler, err: %d\n", ret);
+		pr_debug("Failed to register input handler, err: %d\n", ret);
 		goto unregister_cpu_notif;
 	}
 
@@ -364,13 +364,13 @@ static int __init cpu_input_boost_init(void)
 	b->msm_drm_notif.priority = INT_MAX;
 	ret = msm_drm_register_client(&b->msm_drm_notif);
 	if (ret) {
-		pr_err("Failed to register msm_drm notifier, err: %d\n", ret);
+		pr_debug("Failed to register msm_drm notifier, err: %d\n", ret);
 		goto unregister_handler;
 	}
 
 	boost_thread = kthread_run(cpu_boost_thread, b, "cpu_boostd");
 	if (IS_ERR(boost_thread)) {
-		pr_err("Failed to start CPU boost thread, err: %ld\n",
+		pr_debug("Failed to start CPU boost thread, err: %ld\n",
 		       PTR_ERR(boost_thread));
 		goto unregister_drm_notif;
 	}
