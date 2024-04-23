@@ -1251,3 +1251,24 @@
 		};
 	};
 };
+
+&soc {
+	qcom,msm-thermal-simple {
+		compatible = "qcom,msm-thermal-simple";
+		qcom,poll-ms = <3000>;
+
+		zone@0 {
+			reg = <0>;
+			qcom,silver-khz = <1516800>;
+			qcom,gold-khz = <825600>;
+			qcom,trip-deg = <43000>;
+		};
+
+		zone@1 {
+			reg = <1>;
+			qcom,silver-khz = <1324800>;
+			qcom,gold-khz = <825600>;
+			qcom,trip-deg = <45000>;
+		};
+	};
+};
