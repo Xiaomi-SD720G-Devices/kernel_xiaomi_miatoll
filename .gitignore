@@ -136,3 +136,4 @@ AnyKernel3/
 build.sh
 clang/
 regen.sh
+out/
